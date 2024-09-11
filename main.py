@@ -1,6 +1,6 @@
-import DBManager
-import utils_hh
-from vacancyManager import VacancyManager
+import src.DBManager
+import src.utils_hh
+from src.vacancyManager import VacancyManager
 
 
 def show_menu():
@@ -91,7 +91,7 @@ host = input("Введите хост (по умолчанию 'localhost'): ") 
 port = input("Введите порт (по умолчанию 5432): ") or '5432'
 
 # Создание объекта DBManager с указанными параметрами
-db_manager = DBManager.DBManager(dbname, user, password, host, port)
+db_manager = src.DBManager.DBManager(dbname, user, password, host, port)
 
 # Ввод имени для новой базы данных и создание базы данных
 new_db_name = input("Введите имя для новой базы данных: ")

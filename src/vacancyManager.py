@@ -12,17 +12,17 @@ class VacancyManager:
         Получает случайные вакансии с HH.ru.
         Возвращает список вакансий.
         """
-        params = {
-            'per_page': count,  # количество вакансий на страницу
-            'page': random.randint(0, 100),  # случайная страница
-            'random': True  # произвольные вакансии
-        }
-        response = requests.get(self.base_url, params=params)
-        if response.status_code == 200:
-            return response.json()['items']
-        else:
-            print("Ошибка при получении данных с HH.ru")
-            return []
+        status = 0
+        while status != 200:
+            params = {
+                'per_page': count,  # количество вакансий на страницу
+                'page': random.randint(0, 100),  # случайная страница
+                'random': True  # произвольные вакансии
+            }
+            response = requests.get(self.base_url, params=params)
+            status = response.status_code
+            if response.status_code == 200:
+                return response.json()['items']
 
     def show_employers(self, employers):
         """

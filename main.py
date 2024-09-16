@@ -1,6 +1,7 @@
 import src.DBManager
 import src.utils_hh
 from src.vacancyManager import VacancyManager
+from  src.config import load_config
 
 
 def show_menu():
@@ -83,12 +84,14 @@ def menu(db_manager):
             print("Неверный выбор. Попробуйте снова.")
 
 
+config_data = load_config('database.ini')
+
 # Ввод данных для подключения к базе данных
-dbname = input("Введите имя базы данных: ")
-user = input("Введите имя пользователя: ")
-password = input("Введите пароль: ")
-host = input("Введите хост (по умолчанию 'localhost'): ") or 'localhost'
-port = input("Введите порт (по умолчанию 5432): ") or '5432'
+dbname = config_data['database']
+user = config_data['user']
+password = config_data['password']
+host = config_data['host']
+port = config_data['port']
 
 # Создание объекта DBManager с указанными параметрами
 db_manager = src.DBManager.DBManager(dbname, user, password, host, port)

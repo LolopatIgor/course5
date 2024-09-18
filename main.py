@@ -1,7 +1,7 @@
 import src.DBManager
 import src.utils_hh
 from src.vacancyManager import VacancyManager
-from  src.config import load_config
+from src.config import load_config
 
 
 def show_menu():
